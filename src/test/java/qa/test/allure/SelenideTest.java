@@ -4,8 +4,6 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-
 import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
@@ -14,10 +12,8 @@ import static org.openqa.selenium.By.linkText;
 
 public class SelenideTest {
     @BeforeAll
-    static void setupAllureReports() {
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
-                .screenshots(true)
-                .savePageSource(true));
+    static void setupAllure() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
     }
     @Test
     public void testIssueSearch() {
@@ -31,3 +27,4 @@ public class SelenideTest {
         $(withText("#1")).should(exist);
     }
 }
+
